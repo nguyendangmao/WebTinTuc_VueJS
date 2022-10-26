@@ -1,6 +1,8 @@
 <template>
-    <LoginAdmin @DangNhapvaoAdmin="show" v-if="!Check_login"/>
+    <LoginAdmin @DangNhapvaoAdmin="show"
+     v-if="!Check_login"/>
     <HomeAdmin  v-if="Check_login"
+    @DangNhapvaoAdmin="show"
     />
 </template>
 

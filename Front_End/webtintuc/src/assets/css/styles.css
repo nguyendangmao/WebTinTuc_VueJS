@@ -700,14 +700,14 @@ a.label:hover, a.label:focus {
 .nav-tabs li a:hover {
   background: #fff; }
 
-.nav-tabs li a, .nav-tabs li a:hover, .nav-tabs li.active a, .nav-tabs li.active a:hover {
+.nav-tabs li a, .nav-tabs li a:hover, .nav-tabs li.active a, .nav-tabs li.active:hover {
   border: 0;
   padding: 15px 20px; }
 
-.nav-tabs li.active a {
+.nav-tabs li.active  {
   color: #30a5ff; }
 
-.nav-tabs li a {
+.nav-tabs li  {
   color: #999; }
 
 .nav-pills {
@@ -1031,3 +1031,26 @@ p.back-link {
   margin-bottom: 20px;
   font-size: 12px;
   text-transform: uppercase; }
+/**
+Css Router
+Author:Lợn Cọc
+Date:10:53 Am 26/10/2022
+*/
+.router{
+ height: 50px;
+ padding: 10px 15px;
+ font-size: 15px;
+ line-height: 2em;
+}
+.router:hover, .router:focus{
+  background-color: #30a5ff;
+  cursor: pointer ;
+  color: #FFF;
+}
+ .activeli{
+  background-color: #30a5ff;
+  cursor: none ;
+  color: #FFF;
+}
+
+

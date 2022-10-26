@@ -35,13 +35,13 @@ export default {
          */
         login(){
 			try {
+				this.$router.push('/tintuc') 
 				this.$emit("DangNhapvaoAdmin",true)
 			} catch (error) {
 				console.log(error);
 			}
             
         }
-
     }
 }
 </script>

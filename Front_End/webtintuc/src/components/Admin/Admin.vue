@@ -21,6 +21,11 @@ export default {
     };
   },
   methods: {
+    /**
+     * Show trang đăng nhập
+     * Author:Lợn Cọc
+     * Date: 27/10/2022
+     */
     show(login){
         try {
             this.Check_login=login;

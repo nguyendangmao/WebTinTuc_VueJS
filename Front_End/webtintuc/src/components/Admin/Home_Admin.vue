@@ -25,9 +25,19 @@ export default {
             console.log(error);
         }
     },
+    /**
+     * Hiện title
+     * Author:Lợn Cọc
+     * Date:27/10/2022
+     */
     show(a){
       this.title=a;
     },
+    /**
+     * Khi click vào nav thay đổi dữ liệu
+     * Author:Lợn Cọc
+     * Date: 27/10/2022
+     */
     updated() {
       this.show();
     },

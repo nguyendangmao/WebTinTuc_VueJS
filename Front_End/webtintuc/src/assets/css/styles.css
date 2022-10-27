@@ -830,7 +830,8 @@ a.label:hover, a.label:focus {
 
 .profile-sidebar {
   padding: 10px 0;
-  border-bottom: 1px solid #e9ecf2; }
+  border-bottom: 1px solid black;
+}
 
 .indicator {
   width: 10px;
@@ -1042,7 +1043,7 @@ Date:10:53 Am 26/10/2022
  font-size: 15px;
  line-height: 2em;
 }
-.router:hover, .router:focus{
+.router:hover, .router:focus {
   background-color: #30a5ff;
   cursor: pointer ;
   color: #FFF;
@@ -1051,6 +1052,9 @@ Date:10:53 Am 26/10/2022
   background-color: #30a5ff;
   cursor: none ;
   color: #FFF;
+}
+#sidebar-collapse{
+  background-color: bisque;
 }
 
 

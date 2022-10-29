@@ -9,6 +9,9 @@ export default {
   components: {
     Admin
   },
+  created() {
+    
+  },
 }
 </script>
 

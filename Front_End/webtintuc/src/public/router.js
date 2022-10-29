@@ -14,7 +14,6 @@ const routes = [
     {path :'/quangcao', component:QuangCao},
     {path :'/theloai', component:TheLoai},
     {path :'/nguoidung', component:NguoiDung},
-
   ]
 const vuerouter = createRouter({
     history:createWebHashHistory(),

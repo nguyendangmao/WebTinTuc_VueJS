@@ -6,7 +6,10 @@ var i18n = createI18n({
         vi: {
             ID: 'ID',
             Name: 'Tên',  
-            More: 'Chức năng'
+            More: 'Chức năng',
+            Tabindex:'Thứ tự hiển thị',
+            DateUpdate:'Ngày sửa gần nhất',
+            AccUpdate:'Người sửa gần nhất',
         }
     }
 })

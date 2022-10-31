@@ -1,4 +1,6 @@
-﻿using API_Web.Data;
+﻿using API_Web.Controllers.Admin.PhucTap;
+using API_Web.Controllers.Validation;
+using API_Web.Data;
 using API_Web.Data.Table;
 using API_Web.Models;
 using Microsoft.AspNetCore.Http;
@@ -8,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace API_Web.Controllers.Admin
+namespace API_Web.Controllers.Admin.DonGian
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,12 +27,7 @@ namespace API_Web.Controllers.Admin
         public IActionResult GetAll()
         {
             var dsNhomTin = _context.NhomTinDb.ToList();
-            return Ok(new
-            {
-                Success = true,
-                Data = dsNhomTin
-
-            });
+            return Ok(dsNhomTin);
         }
         //Lấy theo id
         [HttpGet("{id}")]
@@ -43,12 +40,7 @@ namespace API_Web.Controllers.Admin
                 {
                     return NotFound();
                 }
-                return Ok(new
-                {
-                    Success = true,
-                    Data = nhomtin
-
-                });
+                return Ok(nhomtin);
             }
             catch
             {
@@ -59,22 +51,30 @@ namespace API_Web.Controllers.Admin
         [HttpPost]
         public IActionResult Create(NhomTinn NhomtinAdd)
         {
-            var nhomtin = new NhomTinDb
+            try
             {
-                TenNhomTin = NhomtinAdd.TenNhomTin,
-                ThuTuHienThi = NhomtinAdd.ThuTuHienThi,
-                NgayTao = DateTime.Now,
-                NguoiTao = "ADMIN"
+                var nhomtin = new NhomTinDb
+                {
+                    TenNhomTin = NhomtinAdd.TenNhomTin,
+                    ThuTuHienThi = NhomtinAdd.ThuTuHienThi,
+                    NgayTao = DateTime.Now,
+                    NguoiTao = "ADMIN"
 
-            };
-            _context.Add(nhomtin);
-            _context.SaveChanges();
-            return Ok(new
+                };
+                _context.Add(nhomtin);
+                if (nhomtin.ThuTuHienThi > 0)
+                {
+                    _context.SaveChanges();
+                    return StatusCode(StatusCodes.Status201Created, nhomtin);
+                }
+                return StatusCode(StatusCodes.Status416RequestedRangeNotSatisfiable, "Thứ tự phải là số dương");
+
+            }
+            catch
             {
-                Success = true,
-                Data = nhomtin
+                return BadRequest();
+            }
 
-            });
         }
         //Sửa
         [HttpPut("{id}")]
@@ -95,14 +95,12 @@ namespace API_Web.Controllers.Admin
                 nhomtin.ThuTuHienThi = NhomtinEdit.ThuTuHienThi;
                 nhomtin.NgaySua = DateTime.Now;
                 nhomtin.NguoiSua = "ADMIN";
-                _context.SaveChanges();
-                return Ok(new
+                if (nhomtin.ThuTuHienThi > 0)
                 {
-                    Success = true,
-                    Data = nhomtin
-
-                });
-
+                    _context.SaveChanges();
+                    return Ok();
+                }
+                return StatusCode(StatusCodes.Status416RequestedRangeNotSatisfiable, "Thứ tự phải là số dương");
             }
             catch
             {
@@ -122,12 +120,7 @@ namespace API_Web.Controllers.Admin
                 }
                 _context.Remove(nhomtin);
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    Success = true,
-                    Data = nhomtin
-
-                });
+                return Ok();
             }
             catch
             {

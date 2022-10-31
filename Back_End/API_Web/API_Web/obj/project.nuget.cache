@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "fSLwLLCyLvnp7DGNUh24lMfaCEHkD+3qRiRapCPCy8a3fO76X9V0sjhHxKGZqhArg7O5HMfUtlE/pq6n+uCKEg==",
+  "dgSpecHash": "vTOwWXLciYRIH+Oo9wcqxf8AQ9uwPgB+Bp6EsqxZ6dEw/dBOVxbcD28zr0E93AEnCPms29vCvcUtIwE1GgAubQ==",
   "success": true,
   "projectFilePath": "D:\\Learn\\Semester(9-2022)\\Công nghệ phần mềm\\BTL_CNPM(Deadline 30-10)\\WebTinTuc\\Back_End\\API_Web\\API_Web\\API_Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\mediabrowser.common\\4.7.7\\mediabrowser.common.4.7.7.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

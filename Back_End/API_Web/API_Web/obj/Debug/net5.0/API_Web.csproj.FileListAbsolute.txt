@@ -58,3 +58,5 @@ D:\Learn\Semester(9-2022)\Công nghệ phần mềm\BTL_CNPM(Deadline 30-10)\Web
 D:\Learn\Semester(9-2022)\Công nghệ phần mềm\BTL_CNPM(Deadline 30-10)\WebTinTuc\Back_End\API_Web\API_Web\obj\Debug\net5.0\API_Web.pdb
 D:\Learn\Semester(9-2022)\Công nghệ phần mềm\BTL_CNPM(Deadline 30-10)\WebTinTuc\Back_End\API_Web\API_Web\obj\Debug\net5.0\API_Web.genruntimeconfig.cache
 D:\Learn\Semester(9-2022)\Công nghệ phần mềm\BTL_CNPM(Deadline 30-10)\WebTinTuc\Back_End\API_Web\API_Web\obj\Debug\net5.0\ref\API_Web.dll
+D:\Learn\Semester(9-2022)\Công nghệ phần mềm\BTL_CNPM(Deadline 30-10)\WebTinTuc\Back_End\API_Web\API_Web\bin\Debug\net5.0\MediaBrowser.Common.dll
+D:\Learn\Semester(9-2022)\Công nghệ phần mềm\BTL_CNPM(Deadline 30-10)\WebTinTuc\Back_End\API_Web\API_Web\bin\Debug\net5.0\MediaBrowser.Model.dll

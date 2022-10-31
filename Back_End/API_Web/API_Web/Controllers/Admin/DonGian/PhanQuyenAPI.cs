@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 
-namespace API_Web.Controllers.Admin
+namespace API_Web.Controllers.Admin.DonGian
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,12 +23,7 @@ namespace API_Web.Controllers.Admin
         public IActionResult GetAll()
         {
             var dsPhanQuyen = _context.PhanQuyenDb.ToList();
-            return Ok(new
-            {
-                Success = true,
-                Data = dsPhanQuyen
-
-            });
+            return Ok(dsPhanQuyen);
         }
         //Lấy theo id
         [HttpGet("{id}")]
@@ -41,12 +36,7 @@ namespace API_Web.Controllers.Admin
                 {
                     return NotFound();
                 }
-                return Ok(new
-                {
-                    Success = true,
-                    Data = phanquyen
-
-                });
+                return Ok(phanquyen);
             }
             catch
             {
@@ -57,21 +47,23 @@ namespace API_Web.Controllers.Admin
         [HttpPost]
         public IActionResult Create(PhanQuyenn PhanQuyenAdd)
         {
-            var nhomtin = new NhomTinDb
+            try
             {
-                TenNhomTin = PhanQuyenAdd.TenQuyen,
-                NgayTao = DateTime.Now,
-                NguoiTao = "ADMIN"
+                var phanquyen = new PhanQuyenDb
+                {
+                    TenQuyen = PhanQuyenAdd.TenQuyen,
+                    NgayTao = DateTime.Now,
+                    NguoiTao = "ADMIN"
 
-            };
-            _context.Add(nhomtin);
-            _context.SaveChanges();
-            return Ok(new
+                };
+                _context.Add(phanquyen);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, phanquyen);
+            }
+            catch
             {
-                Success = true,
-                Data = nhomtin
-
-            });
+                return BadRequest();
+            }
         }
         //Sửa
         [HttpPut("{id}")]
@@ -92,12 +84,7 @@ namespace API_Web.Controllers.Admin
                 phanquyen.NgaySua = DateTime.Now;
                 phanquyen.NguoiSua = "ADMIN";
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    Success = true,
-                    Data = phanquyen
-
-                });
+                return Ok();
 
             }
             catch
@@ -118,12 +105,7 @@ namespace API_Web.Controllers.Admin
                 }
                 _context.Remove(phanquyen);
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    Success = true,
-                    Data = phanquyen
-
-                });
+                return Ok();
             }
             catch
             {

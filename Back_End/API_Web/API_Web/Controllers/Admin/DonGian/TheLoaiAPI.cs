@@ -4,8 +4,10 @@ using API_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using API_Web.Controllers.Admin.PhucTap;
+using Microsoft.AspNetCore.Http;
 
-namespace API_Web.Controllers.Admin
+namespace API_Web.Controllers.Admin.DonGian
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -22,12 +24,7 @@ namespace API_Web.Controllers.Admin
         public IActionResult GetAll()
         {
             var dsTheLoai = _context.TheLoaiDb.ToList();
-            return Ok(new
-            {
-                Success = true,
-                Data = dsTheLoai
-
-            });
+            return Ok(dsTheLoai);
         }
         //Lấy theo id
         [HttpGet("{id}")]
@@ -40,12 +37,7 @@ namespace API_Web.Controllers.Admin
                 {
                     return NotFound();
                 }
-                return Ok(new
-                {
-                    Success = true,
-                    Data = theloai
-
-                });
+                return Ok(theloai); 
             }
             catch
             {
@@ -56,21 +48,23 @@ namespace API_Web.Controllers.Admin
         [HttpPost]
         public IActionResult Create(TheLoaii TheLoaiAdd)
         {
-            var theloai = new TheLoaiDb
+            try
             {
-                TenTheLoai = TheLoaiAdd.TenTheLoai,
-                NgayTao = DateTime.Now,
-                NguoiTao = "ADMIN"
+                var theloai = new TheLoaiDb
+                {
+                    TenTheLoai = TheLoaiAdd.TenTheLoai,
+                    NgayTao = DateTime.Now,
+                    NguoiTao = "ADMIN"
 
-            };
-            _context.Add(theloai);
-            _context.SaveChanges();
-            return Ok(new
+                };
+                _context.Add(theloai);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, theloai);
+            }
+            catch
             {
-                Success = true,
-                Data = theloai
-
-            });
+                return BadRequest();
+            }
         }
         //Sửa
         [HttpPut("{id}")]
@@ -91,12 +85,7 @@ namespace API_Web.Controllers.Admin
                 theloai.NgaySua = DateTime.Now;
                 theloai.NguoiSua = "ADMIN";
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    Success = true,
-                    Data = theloai
-
-                });
+                return Ok();
 
             }
             catch
@@ -117,12 +106,7 @@ namespace API_Web.Controllers.Admin
                 }
                 _context.Remove(theloai);
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    Success = true,
-                    Data = theloai
-
-                });
+                return Ok();
             }
             catch
             {

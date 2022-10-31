@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace API_Web.Data.Table
 {
@@ -17,5 +18,6 @@ namespace API_Web.Data.Table
         public string NguoiTao { get; set; }
         public DateTime NgaySua { get; set; }
         public string NguoiSua { get; set; }
+
     }
 }

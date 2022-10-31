@@ -4,8 +4,9 @@ using API_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
-namespace API_Web.Controllers.Admin
+namespace API_Web.Controllers.Admin.DonGian
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,18 +17,12 @@ namespace API_Web.Controllers.Admin
         {
             _context = context;
         }
-
         //Lấy tất cả
         [HttpGet]
         public IActionResult GetAll()
         {
             var dsNhaQuangCao = _context.NhaQuangCaoDb.ToList();
-            return Ok(new
-            {
-                Success = true,
-                Data = dsNhaQuangCao
-
-            });
+            return Ok(dsNhaQuangCao);
         }
         //Lấy theo id
         [HttpGet("{id}")]
@@ -40,12 +35,7 @@ namespace API_Web.Controllers.Admin
                 {
                     return NotFound();
                 }
-                return Ok(new
-                {
-                    Success = true,
-                    Data = quangcao
-
-                });
+                return Ok(quangcao);
             }
             catch
             {
@@ -56,21 +46,23 @@ namespace API_Web.Controllers.Admin
         [HttpPost]
         public IActionResult Create(NhaQuangCaoo NhaQuangCaoAdd)
         {
-            var quangcao = new NhaQuangCaoDb
+            try
             {
-                TenNQC = NhaQuangCaoAdd.TenNQC,
-                NgayTao = DateTime.Now,
-                NguoiTao = "ADMIN"
+                var nhaquangcao = new NhaQuangCaoDb
+                {
+                    TenNQC = NhaQuangCaoAdd.TenNQC,
+                    NgayTao = DateTime.Now,
+                    NguoiTao = "ADMIN"
 
-            };
-            _context.Add(quangcao);
-            _context.SaveChanges();
-            return Ok(new
+                };
+                _context.Add(nhaquangcao);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, nhaquangcao);
+            }
+            catch
             {
-                Success = true,
-                Data = quangcao
-
-            });
+                return BadRequest();
+            }
         }
         //Sửa
         [HttpPut("{id}")]
@@ -78,25 +70,20 @@ namespace API_Web.Controllers.Admin
         {
             try
             {
-                var quangcao = _context.NhaQuangCaoDb.SingleOrDefault(nt => nt.IDNQC == int.Parse(id));
-                if (quangcao == null)
+                var nhaquangcao = _context.NhaQuangCaoDb.SingleOrDefault(nt => nt.IDNQC == int.Parse(id));
+                if (nhaquangcao == null)
                 {
                     return NotFound();
                 }
-                if (id != quangcao.IDNQC.ToString())
+                if (id != nhaquangcao.IDNQC.ToString())
                 {
                     return BadRequest();
                 }
-                quangcao.TenNQC = NhaQuangCaoEdit.TenNQC;
-                quangcao.NgaySua = DateTime.Now;
-                quangcao.NguoiSua = "ADMIN";
+                nhaquangcao.TenNQC = NhaQuangCaoEdit.TenNQC;
+                nhaquangcao.NgaySua = DateTime.Now;
+                nhaquangcao.NguoiSua = "ADMIN";
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    Success = true,
-                    Data = quangcao
-
-                });
+                return Ok();
 
             }
             catch
@@ -117,12 +104,7 @@ namespace API_Web.Controllers.Admin
                 }
                 _context.Remove(quangcao);
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    Success = true,
-                    Data = quangcao
-
-                });
+                return Ok();
             }
             catch
             {

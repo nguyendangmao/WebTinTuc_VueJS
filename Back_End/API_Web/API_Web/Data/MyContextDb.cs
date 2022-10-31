@@ -11,8 +11,9 @@ namespace API_Web.Data
         public DbSet<NhaQuangCaoDb> NhaQuangCaoDb { get; set; }
         public DbSet<PhanQuyenDb> PhanQuyenDb { get; set; }
         public DbSet<TheLoaiDb> TheLoaiDb { get; set; }
+        public DbSet<NguoiDungDb> NguoiDungDb { get; set; }
+        public DbSet<QuangCaoDb> QuangCaoDb { get; set; }
+        public DbSet<BaiVietDb> BaiVietDb { get; set; }
 
-
-
+        }
     }
-}

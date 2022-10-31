@@ -10,6 +10,9 @@ export default {
   components: {
     User
   },
+  created() {
+    
+  },
 }
 </script>
 

@@ -29,6 +29,7 @@ export default {
     show(login){
         try {
             this.Check_login=login;
+            console.log(this.$router.path);
         } catch (error) {
             console.log(error);
         }

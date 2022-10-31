@@ -44,7 +44,7 @@
           <em class="fa fa-dashboard">&nbsp;</em> Người Dùng
         </li>
       </router-link>
-      <router-link to="">
+      <router-link to="/">
         <li class="router" @click="logout()" value="">
           <em class="fa fa-power-off">&nbsp;</em> Logout
         </li>
@@ -53,20 +53,19 @@
   </div>
 </template>
 <script>
-import $ from "jquery";
 export default {
   data() {
     return {
       isActive: false,
       title: "",
-    };
+    };  
   },
   methods: {
     logout() {
       try {
         if (confirm("Bạn chắc chắn muốn đăng xuất?") == true) {
           this.$emit("Logout", false);
-          this.$router.push("/login");
+          // this.$router.push("/login");
         } else {
           this.$emit("Logout", true);
         }

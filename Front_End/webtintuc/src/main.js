@@ -5,8 +5,13 @@ import Lib from './public/i18'
 import vuerouter from './public/router'
 import axios from "axios";
 import moment from "moment";
+import routeruser from '../src/public/router'
 
 
 
-
-createApp(App).use(Lib).use($).use(vuerouter).mount('#app')
+const app = createApp(App);
+app.use(routeruser)
+app.use(Lib)
+app.use($)
+app.use(vuerouter)
+app.mount('#app')

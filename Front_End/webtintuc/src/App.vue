@@ -1,14 +1,13 @@
 <template>
-<!-- <Admin/> -->
-<User/>
+<Admin/>
 </template>
 <script>
-// import Admin from '../src/components/Admin/Admin.vue'
-import User from '../src/components/User/Home_User.vue'
+import Admin from '../src/components/Admin/Admin.vue'
+
 export default {
   name: 'App',
   components: {
-    User
+    Admin
   },
   created() {
     

@@ -13,9 +13,9 @@
     <!--/.row-->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header" style="color: white">
+        <h1 class="page-header" style="color: white; margin-bottom:0px">
           {{ title }}
-          <button class="button-6" style="float:right" v-show="check">Thêm mới</button>
+         
         </h1>
       </div>
     </div>
@@ -23,19 +23,20 @@
     <router-view />
   </div>
 </template>
+
 <script>
 export default {
   props: ["title"],
   data() {
     return {
-      check:true
+      // check:true
     }
   },
-  beforeUpdate() {
-    if(this.title !="Thống Kê"){
-      return this.check=true
-    }else return this.check=false
-  },
+  // beforeUpdate() {
+  //   if(this.title !="Thống Kê"){
+  //     return this.check=true
+  //   }else return this.check=false
+  // },
   methods: {
     
   },

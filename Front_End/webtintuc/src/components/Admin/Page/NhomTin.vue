@@ -21,7 +21,7 @@
           <td style="width: 25%">
             <button class="button-6">Sửa</button>
             <button class="button-6">Tắt Trạng Thái</button>
-            <button class="button-6">Xóa</button>
+            <button class="button-6" @click="Check_Delete(data.idNhomTin)">Xóa</button>
           </td>
         </tr>
       </tbody>
@@ -47,7 +47,7 @@ export default {
     List() {
       try {
         axios.get("https://localhost:44309/api/NhomTinAPI").then((response) => {
-          this.datas = response.data.data;
+          this.datas = response.data;
           console.log(this.datas);
         });
       } catch (error) {
@@ -61,6 +61,19 @@ export default {
         }
       } catch (error) {
         console.log(error);
+      }
+    },
+    Check_Delete(id){
+      try {
+        axios.get("https://localhost:44309/api/Check_Delete/Check_NhomTin/"+id).then((response) => {
+           if(response.data.length == 0){
+            if(confirm("Bạn chắc chắn muốn xóa?") == true){
+              //Gọi phương thức xóa
+            }
+           }else alert("Thể loại này tồn tại bài viết, Chỉ có thể tắt trạng thái");
+        });
+      } catch (error) {
+        console.log(error)
       }
     },
   },

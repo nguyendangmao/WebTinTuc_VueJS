@@ -30,6 +30,7 @@ namespace API_Web.Controllers.Admin.DonGian
         [HttpGet("{id}")]
         public IActionResult GetById(string id)
         {
+            
             try
             {
                 var theloai = _context.TheLoaiDb.SingleOrDefault(nt => nt.IDTheLoai == int.Parse(id));
@@ -38,6 +39,25 @@ namespace API_Web.Controllers.Admin.DonGian
                     return NotFound();
                 }
                 return Ok(theloai); 
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        //Check xem có bài viết nào tồn tại thể loại nào không
+        [Route("Tuan123/{IDTheLoai}")]
+        [HttpGet]
+        public IActionResult CheckbyId(string IDTheLoai)
+        {
+            try
+            {
+                var theloai = _context.BaiVietDb.Where(nt => nt.IDTheLoai == int.Parse(IDTheLoai));
+                if (theloai == null)
+                {
+                    return NotFound();
+                }
+                return Ok(theloai);
             }
             catch
             {

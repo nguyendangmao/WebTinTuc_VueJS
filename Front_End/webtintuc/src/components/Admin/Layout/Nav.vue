@@ -15,8 +15,8 @@
     <div class="divider"></div>
     <ul class="nav menu" style="margin-top: 0px" @click="a($event)">
       <router-link to="/tintuc">
-        <li class="router" title="Tin Tức">
-          <em class="fa fa-newspaper-o">&nbsp;</em> Tin Tức
+        <li class="router" title="Bài Viết">
+          <em class="fa fa-newspaper-o">&nbsp;</em> Bài Viết
         </li>
       </router-link>
       <router-link to="/nhomtin">
@@ -39,8 +39,8 @@
           <em class="fa fa-file-text">&nbsp;</em> Thống Kê
         </li>
       </router-link>
-      <router-link to="/nguoidung">
-        <li class="router">
+      <router-link to="/nguoidung" >
+        <li class="router" title="Người Dùng">
           <em class="fa fa-dashboard">&nbsp;</em> Người Dùng
         </li>
       </router-link>

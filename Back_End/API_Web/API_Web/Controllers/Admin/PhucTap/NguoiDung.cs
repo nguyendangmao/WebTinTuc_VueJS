@@ -3,6 +3,7 @@ using API_Web.Data.Table;
 using API_Web.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using System;
@@ -26,15 +27,48 @@ namespace API_Web.Controllers.Admin.PhucTap
         public IActionResult GetAll()
         {
             var dsNguoiDung = _context.NguoiDungDb.ToList();
-            return Ok(dsNguoiDung);
+            var dsPhanQuyen = _context.PhanQuyenDb.ToList();
+            var list = (from nd in dsNguoiDung
+                        join pq in dsPhanQuyen on nd.IDPhanQuyen equals pq.IDPhanQuyen
+                        select new
+                        {
+                            ID = nd.ID,
+                            TenQuyen = pq.TenQuyen,
+                            TenTk = nd.TenTk,
+                            MatKhau = nd.MatKhau,
+                            HoTen = nd.HoTen,
+                            GioiTinh = nd.GioiTinh,
+                            SDT = nd.SDT,
+                            TrangThai = nd.TrangThai,
+                            NgaySua = nd.NgaySua,
+                            NguoiSua = nd.NguoiSua,
+                        });
+            return Ok(list.ToArray());
         }
         //Lấy theo id
         [HttpGet("{id}")]
         public IActionResult GetById(string id)
         {
+            var dsNguoiDung = _context.NguoiDungDb.ToList();
+            var dsPhanQuyen = _context.PhanQuyenDb.ToList();
+            var list = (from nd in dsNguoiDung
+                        join pq in dsPhanQuyen on nd.IDPhanQuyen equals pq.IDPhanQuyen
+                        select new
+                        {
+                            ID = nd.ID,
+                            TenQuyen = pq.TenQuyen,
+                            TenTk = nd.TenTk,
+                            MatKhau = nd.MatKhau,
+                            HoTen = nd.HoTen,
+                            GioiTinh = nd.GioiTinh,
+                            SDT = nd.SDT,
+                            TrangThai = nd.TrangThai,
+                            NgaySua = nd.NgaySua,
+                            NguoiSua = nd.NguoiSua,
+                        });
             try
             {
-                var nguoidung = _context.NguoiDungDb.SingleOrDefault(nt => nt.ID == int.Parse(id));
+                var nguoidung = list.SingleOrDefault(nt => nt.ID == int.Parse(id));
                 if (nguoidung == null)
                 {
                     return NotFound();

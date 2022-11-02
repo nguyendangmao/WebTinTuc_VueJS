@@ -10,6 +10,23 @@ var i18n = createI18n({
             Tabindex:'Thứ tự hiển thị',
             DateUpdate:'Ngày sửa gần nhất',
             AccUpdate:'Người sửa gần nhất',
+            TaiKhoan:'Tài Khoản',
+            MatKhau: 'Mật khẩu',
+            GioiTinh:'Giới tính',
+            SDT:'Số điện thoại',
+            NT:'Nhóm tin',
+            TL:'Thể Loại',
+            QC:'Quảng Cáo',
+            ND:'Nội dung',
+            Anh:'Ảnh',
+            SoSao:'Số sao TB',
+            LuotXem:'Lượt xem',
+            Tien:'Tiền quảng cáo',
+            TGBD:'Thời gian bắt đầu',
+            TGKT :'Thời gian kết thúc',
+            VT:'Vị trí',
+            CD:'Chiều dài',
+            CR:'Chiều rộng'
         }
     }
 })

@@ -22,7 +22,6 @@ namespace API_Web.Models
         public int LuotXem { get; set; }
         [Required]
         public DateTime NgayTao { get; set; }
-        [Required]
         public string NguoiTao { get; set; }
         public DateTime NgaySua { get; set; }
         public string NguoiSua { get; set; }

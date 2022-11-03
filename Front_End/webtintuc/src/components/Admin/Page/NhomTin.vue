@@ -121,7 +121,13 @@ export default {
   created: function () {
     this.List();
   },
+  
   methods: {
+    /**
+     * Get dữ liệu
+     * Date:2-11-2022
+     * Author: Lợn Cọc
+     */
     List() {
       try {
         axios.get("https://localhost:44309/api/NhomTinAPI").then((response) => {
@@ -132,6 +138,11 @@ export default {
         console.log(error);
       }
     },
+     /**
+     * Format Ngày
+     * Date:2-11-2022
+     * Author: Lợn Cọc
+     */
     format_date(value) {
       try {
         if (value) {
@@ -141,6 +152,11 @@ export default {
         console.log(error);
       }
     },
+    /**
+     * Check trước khi xóa
+     * Date: 2-11-2022
+     * Author:Lợn Cọc
+     */
     Check_Delete(id) {
       try {
         axios
@@ -162,6 +178,11 @@ export default {
         console.log(error);
       }
     },
+    /**
+     * Check xem 
+     * Date: 2-11-2022
+     * Author:Lợn Cọc
+     */
     AddOrEdit(value) {
       this.showdialog = true;
       if (value != null ) {

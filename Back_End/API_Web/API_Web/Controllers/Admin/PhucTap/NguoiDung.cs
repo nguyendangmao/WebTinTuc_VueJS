@@ -33,6 +33,7 @@ namespace API_Web.Controllers.Admin.PhucTap
                         select new
                         {
                             ID = nd.ID,
+                            IDPhanQuyen = nd.IDPhanQuyen,
                             TenQuyen = pq.TenQuyen,
                             TenTk = nd.TenTk,
                             MatKhau = nd.MatKhau,
@@ -56,6 +57,7 @@ namespace API_Web.Controllers.Admin.PhucTap
                         select new
                         {
                             ID = nd.ID,
+                            IDPhanQuyen = nd.IDPhanQuyen,
                             TenQuyen = pq.TenQuyen,
                             TenTk = nd.TenTk,
                             MatKhau = nd.MatKhau,
@@ -172,5 +174,16 @@ namespace API_Web.Controllers.Admin.PhucTap
             }
         }
 
+        //Lấy tài khoản
+        [HttpGet("LayTaiKhoan")]
+        public IActionResult LayTK(string tk, string mk)
+        {
+            var ds=_context.NguoiDungDb.SingleOrDefault(nt => nt.TenTk==tk);
+            if(ds == null)
+            {
+                return NotFound();
+            } 
+            return Ok(ds);
+        }
     }
 }

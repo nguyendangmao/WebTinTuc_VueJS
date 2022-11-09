@@ -1,24 +1,11 @@
 <template>
-    <LoginAdmin @DangNhapvaoAdmin="show"
-     v-if="!Check_login"/>
-    <HomeAdmin  v-if="Check_login"
-    @DangNhapvaoAdmin="show"
-    />
+    <router-view/>
 </template>
 
 <script>
-import HomeAdmin from '../Admin/Home_Admin.vue'
-import LoginAdmin from '../Admin/Login.vue'
-
 export default {
   name: 'Admin',
-  components: {
-    HomeAdmin,LoginAdmin
-  },
   data() {
-    return {
-        Check_login: false,
-    };
   },
   methods: {
     /**
@@ -26,15 +13,22 @@ export default {
      * Author:Lợn Cọc
      * Date: 27/10/2022
      */
-    show(login){
-        try {
-            this.Check_login=login;
-            console.log(this.$router.path);
-        } catch (error) {
-            console.log(error);
-        }
+    // show(login){
+    //     try {
+    //         this.Check_login=login;
+    //         console.log(this.$router.path);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
         
-    }
+    // }
   },
 }
 </script>
+<style scoped>
+@import url(../../assets/css/bootstrap.min.css);
+@import url(../../assets/css/font-awesome.min.css);
+@import url(../../assets/css/datepicker3.css);
+@import url(../../assets/css/styles.css);
+@import url(../../assets/css/LonCoc.css);
+</style>

@@ -1670,11 +1670,13 @@ tbody tr:hover {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.650);
   z-index: 3;
+  height: 170%;
+  
 }
 
 input[type=text],
 select {
-  width: 500px;
+  width: 440px;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;

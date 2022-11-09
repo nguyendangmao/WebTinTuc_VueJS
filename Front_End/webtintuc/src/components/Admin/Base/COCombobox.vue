@@ -1,5 +1,5 @@
 <template>
-  <div class="combobox">
+  <div class="combobox" style="display: flex; width: 446px; height: 45px">
     <input
       type="text"
       class="combobox__input"
@@ -84,13 +84,15 @@ const clickoutside = {
     document.body.removeEventListener("click", el.clickOutsideEvent);
   },
 };
+
 export default {
   directives: {
     clickoutside,
   },
+
   props: {
     placText: String,
-    value: null,
+    value: String,
     url: String,
     propValue: String,
     propText: String,
@@ -108,7 +110,6 @@ export default {
     },
     btnSelectDataOnClick() {
       this.isShowListData = !this.isShowListData;
-      
     },
 
     itemOnSelect(item, index) {
@@ -184,6 +185,7 @@ export default {
           console.log(res);
         });
     }
+    
   },
   data() {
     return {
@@ -205,7 +207,7 @@ export default {
   position: relative;
   /* flex-direction: row; */
   height: 30px;
-  border: 1px solid rgb(67, 65, 65);
+  border: 1px solid #ccc;
   border-radius: 3px;
   align-items: center;
   justify-items: center;
@@ -240,7 +242,7 @@ select {
   opacity: 0.5;
 }
 .button__icon {
-  background-image: url("../../assets/img/Sprites.64af8f61.svg");
+  background-image: url("../../../assets//Sprites.64af8f61.svg");
   background-position: -560px -359px;
 }
 

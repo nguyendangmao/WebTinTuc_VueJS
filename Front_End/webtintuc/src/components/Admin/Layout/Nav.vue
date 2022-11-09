@@ -39,7 +39,7 @@
           <em class="fa fa-file-text">&nbsp;</em> Thống Kê
         </li>
       </router-link>
-      <router-link to="/nguoidung" >
+      <router-link to="/nguoidung">
         <li class="router" title="Người Dùng">
           <em class="fa fa-dashboard">&nbsp;</em> Người Dùng
         </li>
@@ -58,16 +58,14 @@ export default {
     return {
       isActive: false,
       title: "",
-    };  
+    };
   },
   methods: {
     logout() {
       try {
         if (confirm("Bạn chắc chắn muốn đăng xuất?") == true) {
-          this.$emit("Logout", false);
-          // this.$router.push("/login");
-        } else {
-          this.$emit("Logout", true);
+          localStorage.clear();
+          this.$router.push({ path: "/" });
         }
       } catch (error) {
         console.log(error);

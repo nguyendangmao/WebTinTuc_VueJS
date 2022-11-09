@@ -53,5 +53,31 @@ namespace API_Web.Controllers.Validation
                 return BadRequest();
             }
         }
+        //Check xem có bài viết nào tồn tại nhóm tin cần xóa  không
+        [Route("Check_NguoiDung/{ID}")]
+        [HttpGet]
+        public IActionResult CheckByID2(string ID)
+        {
+            try
+            {
+                //Lấy thông tin của id cần xóa
+                var nguoidung = _context.NguoiDungDb.SingleOrDefault(nt => nt.ID == int.Parse(ID));
+                //Lấy tất cả các người dùng là admin
+                var dsAdmin = _context.NguoiDungDb.Where(nt => nt.IDPhanQuyen == 2);
+                if (nguoidung.IDPhanQuyen == 2)
+                {
+                    if (dsAdmin.Count() > 1)
+                    {
+                        return StatusCode(StatusCodes.Status200OK, "Thỏa mãn");
+                    }
+                    else return(StatusCode(StatusCodes.Status412PreconditionFailed, "Phải còn ít nhất 1 Admin"));
+                }
+                return StatusCode(StatusCodes.Status200OK,"Thỏa mãn");
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
     }
 }

@@ -151,7 +151,11 @@ export default {
   created: function () {
     this.List();
   },
-
+  /**
+   * Kiểm tra đã đăng nhập hay chưa
+   * Date : 10-11-2022
+   * Author : Lợn Cọc
+   */
   mounted() {
     let user = localStorage.getItem("user-info");
     if (!user) {

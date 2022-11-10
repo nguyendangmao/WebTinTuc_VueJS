@@ -5,10 +5,6 @@
 
 export default {
   name: 'App',
-  
-  created() {
-    
-  },
 }
 </script>
 <style scoped>

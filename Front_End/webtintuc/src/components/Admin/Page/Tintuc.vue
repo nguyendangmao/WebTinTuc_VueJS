@@ -185,12 +185,6 @@ export default {
     Header,
     Nav,
   },
-  mounted() {
-    let user = localStorage.getItem("user-info");
-    if (!user) {
-      this.$router.push({ path: "/" });
-    }
-  },
   data() {
     return {
       datas: [],
@@ -228,28 +222,54 @@ export default {
   created: function () {
     this.List();
   },
-
+  /**
+   * Kiểm tra đã đăng nhập hay chưa
+   * Date : 10-11-2022
+   * Author : Lợn Cọc
+   */
+  mounted() {
+    let user = localStorage.getItem("user-info");
+    if (!user) {
+      this.$router.push({ path: "/" });
+    }
+  },
   methods: {
-    showdata(value) {
-      console.log(value);
-    },
+    /**
+     * Lấy quảng cáo vào combobox
+     * Date : 10-11-2022
+     * Author : Lợn Cọc
+     */
     LayQuangCao(event) {
       this.data.idQuangCao = event.target.value;
     },
+    /**
+     * Lấy thể loại vào combobox
+     */
     LayTheLoai(event) {
       this.data.idTheLoai = event.target.value;
     },
+    /**
+     * Lấy nhóm tin
+     */
     LayNhomTin(event) {
       this.data.idNhomTin = event.target.value;
     },
+    /**
+     * Hiển thị nội dung bài viết
+     */
     show(value) {
       this.showdetail = true;
       this.content = value;
     },
-
+    /**
+     * Đóng nội dung bài viết
+     */
     Close() {
       this.showdetail = false;
     },
+    /**
+     * Gọi Api lấy các dữ liệu cần thiết
+     */
     List() {
       try {
         axios.get("https://localhost:44309/api/BaiViet").then((response) => {
@@ -268,6 +288,9 @@ export default {
         console.log(error);
       }
     },
+    /**
+     * Định dạng ngày tháng
+     */
     format_date(value) {
       try {
         if (value) {

@@ -274,7 +274,7 @@ export default {
 
     methods: {
         getbaiviets(id){
-        this.$request.get(`https://localhost:44309/api/BaiViet/${id}`).then(res => {
+        this.$request.get('https://localhost:44309/api/BaiViet/'+id).then(res => {
             this.baiviets=res.data
             console.log(res.data);
         }) 

@@ -42,7 +42,6 @@
     </div>
     <!-- /.col-->
   </div>
-  <!-- /.row -->
 </template>
 <script>
 import axios from "axios";

@@ -11,16 +11,11 @@ namespace API_Web.Models
         public int IDPhanQuyen { get; set; }
         [Required]
         public string TenTk { get; set; }
-        [Required]
         public string MatKhau { get; set; }
-        [Required]
         public string HoTen { get; set; }
-        [Required]
         public string GioiTinh { get; set; }
-        [Required]
         [MaxLength(10)]
         public string SDT { get; set; }
-        [Required]
         public TrangThai TrangThai { get; set; }
         [Required]
         public DateTime NgayTao { get; set; }

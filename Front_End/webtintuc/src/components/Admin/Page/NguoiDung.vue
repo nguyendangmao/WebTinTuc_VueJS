@@ -115,12 +115,16 @@
           <div style="padding-right: 10px; padding-bottom: 15px">
             <label for="tentl" class="LonCoc">Phân Quyền</label>
             <br />
-            <input
-              style="margin-left: 5px"
-              type="text"
-              v-model="this.data.idPhanQuyen"
-              placeholder="Phân Quyền.."
-            />
+            <select @change="LayPhanQuyen($event)" v-model="b">
+              <option value="null1" disabled>{{ data.tenQuyen }}</option>
+              <option
+                v-for="data3 in datas3"
+                :key="data3.idPhanQuyen"
+                :value="data3.idPhanQuyen"
+              >
+                {{ data3.tenQuyen }}
+              </option>
+            </select>
           </div>
           <div>
             <label for="tentl" class="LonCoc">Số điện thoại</label>
@@ -151,6 +155,11 @@ export default {
     Header,
     Nav,
   },
+  /**
+   * Kiểm tra đã đăng nhập hay chưa
+   * Date : 10-11-2022
+   * Author : Lợn Cọc
+   */
   mounted() {
     let user = localStorage.getItem("user-info");
     if (!user) {
@@ -161,34 +170,13 @@ export default {
     return {
       datas: [],
       data: {
-        id: "",
-        idPhanQuyen: "",
-        tenQuyen: "",
-        gioiTinh: "",
-        hoTen: "",
-        matKhau: "",
-        tenTk: "",
-        sdt: "",
-        trangThai: "",
         ngayTao: "2022-11-02T14:28:37.796Z",
         nguoiTao: "",
         ngaySua: "2022-11-02T14:28:37.796Z",
-        nguoiSua: "",
       },
       back_up: {
-        id: "",
-        idPhanQuyen: "",
-        tenQuyen: "",
-        gioiTinh: "",
-        hoTen: "",
-        matKhau: "",
-        tenTk: "",
-        sdt: "",
-        trangThai: "",
         ngayTao: "2022-11-02T14:28:37.796Z",
-        nguoiTao: "",
         ngaySua: "2022-11-02T14:28:37.796Z",
-        nguoiSua: "",
       },
       check_Edit: {
         id: "",
@@ -205,6 +193,14 @@ export default {
         ngaySua: "2022-11-02T14:28:37.796Z",
         nguoiSua: "",
       },
+      data_export: {
+        id: "",
+        ngaySua: "2021-10-02T00:00:00",
+        ngayTao: "2021-10-02T00:00:00",
+        trangThai: 0,
+      },
+      datas3: [],
+      b: "null1",
       showdialog: false,
       showtable: true,
     };
@@ -213,6 +209,9 @@ export default {
     this.List();
   },
   methods: {
+    LayPhanQuyen(event) {
+      this.data.idPhanQuyen = event.target.value;
+    },
     /**
      * Lấy data
      * Date: 4-11-2022
@@ -223,6 +222,11 @@ export default {
         axios.get("https://localhost:44309/api/NguoiDung").then((response) => {
           this.datas = response.data;
         });
+        axios
+          .get("https://localhost:44309/api/PhanQuyenAPI")
+          .then((response) => {
+            this.datas3 = response.data;
+          });
       } catch (error) {
         console.log(error);
       }
@@ -248,11 +252,6 @@ export default {
       try {
         axios
           .get("https://localhost:44309/api/Check_Delete/Check_NguoiDung/" + id)
-          .catch((error) => {
-            if (error.response.data.toString() != "Thỏa mãn") {
-              alert(error.response.data);
-            }
-          })
           .then(() => {
             if (confirm("Bạn chắc chắn muốn xóa?") == true) {
               axios
@@ -261,6 +260,11 @@ export default {
                   alert("Xóa thành công");
                   this.List();
                 });
+            }
+          })
+          .catch((error) => {
+            if (error.response.data.toString() != "Thỏa mãn") {
+              alert(error.response.data);
             }
           });
       } catch (error) {
@@ -288,8 +292,9 @@ export default {
      * Author: Lợn Cọc
      */
     Confim(value) {
-      if (value == "") {
-        this.Add();
+      console.log(value);
+      if (value == "" || value == undefined) {
+        this.Add()
       } else {
         this.Edit(value);
       }
@@ -300,23 +305,20 @@ export default {
      * Author: Lợn Cọc
      */
     Edit(value) {
+      this.GanBien(this.data);
       axios
-        .get("https://localhost:44309/api/NguoiDung/" + value)
-        .then((response) => {
-          this.check_Edit = response.data;
-          if (
-            Object.values(this.check_Edit).toString() !=
-            Object.values(this.data).toString()
-          ) {
-            axios
-              .put("https://localhost:44309/api/NguoiDung/" + value, this.data)
-              .then(() => {
-                alert("Sửa thành công");
-                this.List();
-              });
-          }
-          this.Begin();
+        .put("https://localhost:44309/api/NguoiDung/" + value, this.data_export)
+        .then(() => {
+          alert("Sửa thành công");
+          this.List();
         });
+      this.Begin();
+
+      // .get("https://localhost:44309/api/NguoiDung/" + value)
+      // .then((response) => {
+      //   this.check_Edit = response.data;
+      //   {
+      // });
     },
     /**
      * Xử lí sự kiện thêm
@@ -324,14 +326,30 @@ export default {
      * Author: Lợn Cọc
      */
     Add() {
+      console.log(this.data);
+      this.GanBien(this.data);
+      console.log(this.data_export);
       axios
-        .post("https://localhost:44309/api/NguoiDung/", this.data)
+        .post("https://localhost:44309/api/NguoiDung/", this.data_export)
         .then(() => {
           alert("Thêm thành công");
           this.Begin();
           this.List();
         });
-      console.log(this.data);
+    },
+    /**
+     * Gán giá trị để thêm hoặc sửa
+     * Date: 10-11-2022
+     * Author: Lợn Cọc
+     */
+    GanBien(value) {
+      this.data_export.id = value.id;
+      this.data_export.idPhanQuyen = Number(value.idPhanQuyen);
+      this.data_export.tenTK = value.tenTk;
+      this.data_export.matKhau = value.matKhau;
+      this.data_export.hoTen = value.gioiTinh;
+      this.data_export.sdt = value.sdt;
+      this.data_export.gioiTinh=value.gioiTinh;
     },
     /**
      * Khởi tạo lại trang thêm hoặc sửa

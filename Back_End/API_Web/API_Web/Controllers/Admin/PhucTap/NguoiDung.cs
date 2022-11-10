@@ -178,10 +178,10 @@ namespace API_Web.Controllers.Admin.PhucTap
         [HttpGet("LayTaiKhoan")]
         public IActionResult LayTK(string tk, string mk)
         {
-            var ds=_context.NguoiDungDb.SingleOrDefault(nt => nt.TenTk==tk);
+            var ds=_context.NguoiDungDb.SingleOrDefault(nt => nt.TenTk==tk && nt.MatKhau==mk && nt.IDPhanQuyen == 2);
             if(ds == null)
             {
-                return NotFound();
+                return StatusCode(StatusCodes.Status404NotFound, "Tài khoản hoặc mật khẩu không đúng");
             } 
             return Ok(ds);
         }

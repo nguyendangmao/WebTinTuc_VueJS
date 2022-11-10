@@ -329,7 +329,6 @@ export default {
      */
     AddOrEdit(value) {
       this.showdialog = true;
-      console.log(this.datas1);
       if (value != null) {
         axios
           .get("https://localhost:44309/api/BaiViet/" + value)
@@ -344,6 +343,7 @@ export default {
      * Author: Lợn Cọc
      */
     Confim(value) {
+      
       if (value == "") {
         this.Add();
       } else {

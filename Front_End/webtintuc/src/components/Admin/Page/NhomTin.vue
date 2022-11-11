@@ -76,12 +76,15 @@
           <div>
             <input
               style="margin-left: 5px"
-              ref="labelInput"
+              ref="TenTheLoai"
               type="text"
               v-model="this.data.tenNhomTin"
               name="firstname"
               placeholder="Tên thể loại.."
             />
+            <p style="color: red" v-if="Check_null">
+              Không được để trống tên thể loại
+            </p>
           </div>
           <label
             for="tentl"
@@ -96,14 +99,15 @@
           <div>
             <input
               style="margin-left: 5px"
-              ref="labelInput"
               type="text"
+              ref="SoTT"
               v-model="this.data.thuTuHienThi"
               name="firstname"
               placeholder="Thứ tự hiển thị.."
             />
+            <p style="color: red" v-if="CheckValidata">Thứ tự phải là số</p>
           </div>
-          <button @click="Confim(this.data.idNhomTin)" class="button-8">
+          <button @click="Confim(this.data.idNhomTin)" class="button-7">
             OK
           </button>
           <button @click="Begin()" class="button-8">Hủy</button>
@@ -146,6 +150,8 @@ export default {
       },
       showdialog: false,
       showtable: true,
+      CheckValidata: false,
+      Check_null: false,
     };
   },
   created: function () {
@@ -176,6 +182,21 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    /**
+     * Check trống
+     * Date: 11/11/2022
+     * Author: Lợn Cọc
+     */
+    check_null() {
+      if (this.$refs.TenTheLoai.value == "") {
+        this.Check_null = true;
+      } else if (this.$refs.TenTheLoai.value != "") this.Check_null = false;
+      var number = /[0-9]/;
+      if (number.test(this.$refs.SoTT.value) == false) {
+        this.CheckValidata = true;
+      } else if (number.test(this.$refs.SoTT) != false)
+        this.CheckValidata = false;
     },
     /**
      * Format Ngày
@@ -238,6 +259,7 @@ export default {
      * Author: Lợn Cọc
      */
     Confim(value) {
+      this.check_null();
       if (value == "") {
         this.Add();
       } else {
@@ -292,6 +314,8 @@ export default {
     Begin() {
       this.showdialog = false;
       this.data = this.back_up;
+      this.CheckValidata =  false;
+      this.Check_null= false;
     },
   },
 };

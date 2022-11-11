@@ -103,6 +103,9 @@
                 {{ data2.tenNhomTin }}
               </option>
             </select>
+            <p style="color: red" v-if="nhomtin">
+              Không được để trống tên nhóm tin
+            </p>
           </div>
           <div style="padding-right: 10px; padding-bottom: 15px">
             <label for="tentl" class="LonCoc" style="margin-bottom: 13px"
@@ -118,6 +121,9 @@
                 {{ data3.tenTheLoai }}
               </option>
             </select>
+            <p style="color: red" v-if="theloai">
+              Không được để trống tên thể loại
+            </p>
           </div>
         </div>
         <div style="display: flex">
@@ -135,6 +141,9 @@
                 {{ data1.noiDungQC }}
               </option>
             </select>
+            <p style="color: red" v-if="quangcao">
+              Không được để trống quảng cáo
+            </p>
           </div>
           <div>
             <label for="tentl" class="LonCoc">Tên Bài Viết</label>
@@ -193,6 +202,13 @@ export default {
       showdetail: false,
       editor: ClassicEditor,
       back_up: {
+        idBaiViet: "",
+        tenBaiViet: "",
+        tenNhomTin: "",
+        tenTheLoai: "",
+        quangCao: "",
+        noiDungBaiViet: "",
+        hinhAnh: "",
         ngaySua: "2021-10-02T00:00:00",
         ngayTao: "2021-10-02T00:00:00",
       },
@@ -217,6 +233,9 @@ export default {
         soSaoTB: 0,
         luotXem: 0,
       },
+      nhomtin: false,
+      quangcao: false,
+      theloai: false,
     };
   },
   created: function () {
@@ -301,6 +320,23 @@ export default {
       }
     },
     /**
+     * Check Data
+     * Date: 11-11-2022
+     * Author: Lợn Cọc
+     */
+    Check_Data() {
+      //Check các giá trị không null
+      //Nhóm tin
+      if (this.data_export.idNhomTin == Number) this.nhomtin = true;
+      else this.nhomtin = false;
+      //Quảng cáo
+      if (this.data_export.idQuangCao == Number) this.quangcao = true;
+      else this.quangcao = false;
+      //Thể Loại
+      if (this.data_export.idTheLoai == Number) this.theloai = true;
+      else this.theloai = false;
+    },
+    /**
      *Xóa
      * Date: 6-11-2022
      * Author:Lợn Cọc
@@ -329,13 +365,11 @@ export default {
      */
     AddOrEdit(value) {
       this.showdialog = true;
-      if (value != null) {
-        axios
-          .get("https://localhost:44309/api/BaiViet/" + value)
-          .then((response) => {
-            this.data = response.data;
-          });
-      }
+      axios
+        .get("https://localhost:44309/api/BaiViet/" + value)
+        .then((response) => {
+          this.data = response.data;
+        });
     },
     /**
      * Ấn nút ok
@@ -343,7 +377,7 @@ export default {
      * Author: Lợn Cọc
      */
     Confim(value) {
-      
+      this.Check_Data();
       if (value == "") {
         this.Add();
       } else {
@@ -414,6 +448,9 @@ export default {
     Begin() {
       this.showdialog = false;
       this.data = this.back_up;
+      this.nhomtin = false;
+      this.quangcao =  false;
+      this.theloai = false;
     },
   },
 };

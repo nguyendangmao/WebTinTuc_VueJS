@@ -25,8 +25,6 @@
 </template>
 
 <script>
-import axios from "axios";
-import moment from "moment";
 import Header from "../Layout/Header.vue";
 import Nav from "../Layout//Nav.vue";
 export default {

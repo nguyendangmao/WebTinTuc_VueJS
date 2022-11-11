@@ -96,9 +96,13 @@
             <input
               style="margin-left: 5px"
               type="text"
+              ref="email"
               v-model="this.data.tenTk"
               placeholder="Tên Tài Khoản...."
             />
+            <p style="color: red" v-if="value_user">
+              Định dạng email không đúng
+            </p>
           </div>
           <div>
             <label for="tentl" class="LonCoc">Mật Khẩu</label>
@@ -109,6 +113,9 @@
               v-model="this.data.matKhau"
               placeholder="Mật Khẩu.."
             />
+            <p style="color: red" v-if="matkhau">
+              Không được để trống mật khẩu
+            </p>
           </div>
         </div>
         <div style="display: flex">
@@ -125,6 +132,9 @@
                 {{ data3.tenQuyen }}
               </option>
             </select>
+            <p style="color: red" v-if="phanquyen">
+              Phải phân quyền cho đối tượng
+            </p>
           </div>
           <div>
             <label for="tentl" class="LonCoc">Số điện thoại</label>
@@ -132,9 +142,13 @@
             <input
               style="margin-left: 5px"
               type="text"
+              ref="Phone"
               v-model="this.data.sdt"
               placeholder="Số điện thoại.."
             />
+            <p style="color: red" v-if="sdt">
+              Số điện thoại phải đúng định dạng
+            </p>
           </div>
         </div>
         <div style="float: right">
@@ -203,6 +217,15 @@ export default {
       b: "null1",
       showdialog: false,
       showtable: true,
+      //Khai báo check dữ liệu
+      //Phải có Tên tài khoản(chuẩn email)
+      value_user: false,
+      //Phải có phân quyền
+      phanquyen: false,
+      //Phải có mật khẩu
+      matkhau: false,
+      //Số điện thoại phải đúng dạng
+      sdt: false,
     };
   },
   created: function () {
@@ -272,6 +295,29 @@ export default {
       }
     },
     /**
+     * Check_data
+     * Date: 11-11-2022
+     * Author : Lợn Cọc
+     */
+    Check_Data() {
+      var CheckEmail = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/;
+      //Phải có Tên tài khoản(chuẩn email)
+      if (CheckEmail.test(this.$refs.email.value) == true) {
+          this.value_user = false;
+        } else this.value_user = true;
+      //Phải có phân quyền
+      if (this.data_export.idPhanQuyen == Number) this.phanquyen = false;
+      else this.phanquyen = true;
+      //Phải có mật khẩu
+      if (this.data_export.matKhau == undefined) this.matkhau = true;
+      else this.matkhau = false;
+      //Số điện thoại phải đúng dạng
+      var CheckPhone = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+      if (CheckPhone.test(this.$refs.Phone.value) == true) {
+        this.sdt = false;
+      } else this.sdt = true;
+    },
+    /**
      * Check xem
      * Date: 4-11-2022
      * Author:Lợn Cọc
@@ -292,9 +338,10 @@ export default {
      * Author: Lợn Cọc
      */
     Confim(value) {
-      console.log(value);
+      console.log(this.data_export);
+      this.Check_Data();
       if (value == "" || value == undefined) {
-        this.Add()
+        this.Add();
       } else {
         this.Edit(value);
       }
@@ -349,7 +396,7 @@ export default {
       this.data_export.matKhau = value.matKhau;
       this.data_export.hoTen = value.gioiTinh;
       this.data_export.sdt = value.sdt;
-      this.data_export.gioiTinh=value.gioiTinh;
+      this.data_export.gioiTinh = value.gioiTinh;
     },
     /**
      * Khởi tạo lại trang thêm hoặc sửa
@@ -359,6 +406,10 @@ export default {
     Begin() {
       this.showdialog = false;
       this.data = this.back_up;
+      this.value_user = false;
+      this.phanquyen = false;
+      this.matkhau = false;
+      this.sdt = false;
     },
   },
 };

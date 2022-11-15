@@ -3,17 +3,13 @@ import Home from '../components/Home.vue'
 import Contact from '../components/Contact.vue'
 import Detail from '../components/Detail.vue'
 import NewByCategory from '../components/NewByCategory.vue'
-import Login from '../components/Login.vue'
-import Register from '../components/Register.vue'
+import NewsByGenre from '../components/NewsByGenre.vue'
 const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/Contact', name: 'Contact', component: Contact },
-    { path: '/Detail', name: 'Detail', component: Detail },
-    { path: '/Detail/:id', name: 'product.detail', component: Detail },
+    { path: '/Detail/:id', name: 'Detail', component: Detail },
     { path: '/NewByCategory/:id', name: 'NewByCategory', component: NewByCategory },
-    { path: '/Login', name: 'Login', component: Login },
-    { path: '/Register', name: 'Register', component: Register },
-
+    { path: '/NewsByGenre/:id', name: 'NewsByGenre', component: NewsByGenre },
 ]
 
 const router = createRouter({

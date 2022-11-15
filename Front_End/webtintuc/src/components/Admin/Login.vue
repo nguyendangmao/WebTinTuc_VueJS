@@ -76,7 +76,7 @@ export default {
           .then((response) => {
             localStorage.setItem("user-info", JSON.stringify(response.data));
             this.$router.push({ path: "/tintuc" });
-            localStorage tồn tại trong 2 phút
+            // localStorage tồn tại trong 2 phút
             setTimeout(() => {
               localStorage.clear();
               this.$router.push({ path: "/" });

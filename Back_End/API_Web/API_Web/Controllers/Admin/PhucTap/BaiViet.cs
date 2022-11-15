@@ -36,9 +36,13 @@ namespace API_Web.Controllers.Admin.PhucTap
                         {
                             IDBaiViet = bv.IDBaiViêt,
                             TenBaiViet = bv.TenBaiViet,
+                            IdNhomTin =bv.IDNhomTin,
                             TenNhomTin = nt.TenNhomTin,
+                            IdTheLoai = bv.IDTheLoai,
                             TenTheLoai = tl.TenTheLoai,
+                            IdQuangCao = bv.IDQuangCao,
                             QuangCao = qc.NoiDungQC,
+                            HinhAnhQC = qc.HinhAnh,
                             NoiDungBaiViet = bv.NoiDungBaiViet,
                             HinhAnh = bv.HinhAnh,
                             SoSaoTB = bv.SoSaoTB,
@@ -65,9 +69,13 @@ namespace API_Web.Controllers.Admin.PhucTap
                       {
                           IDBaiViet = bv.IDBaiViêt,
                           TenBaiViet = bv.TenBaiViet,
+                          IdNhomTin = bv.IDNhomTin,
                           TenNhomTin = nt.TenNhomTin,
+                          IdTheLoai = bv.IDTheLoai,
                           TenTheLoai = tl.TenTheLoai,
+                          IdQuangCao = bv.IDQuangCao,
                           QuangCao = qc.NoiDungQC,
+                          HinhAnhQC = qc.HinhAnh,
                           NoiDungBaiViet = bv.NoiDungBaiViet,
                           HinhAnh = bv.HinhAnh,
                           SoSaoTB = bv.SoSaoTB,
@@ -180,6 +188,95 @@ namespace API_Web.Controllers.Admin.PhucTap
                 _context.Remove(baiviet);
                 _context.SaveChanges();
                 return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        //Xóa
+        [HttpGet("LayDSbaiviet")]
+        public IActionResult LayTheoTheLoai(string idTheLoai)
+        {
+            var dsBaiViet = _context.BaiVietDb.ToList();
+            var dsNhomTin = _context.NhomTinDb.ToList();
+            var dsTheLoai = _context.TheLoaiDb.ToList();
+            var dsQuangCao = _context.QuangCaoDb.ToList();
+
+            var ds = (from bv in dsBaiViet
+                      join nt in dsNhomTin on bv.IDNhomTin equals nt.IDNhomTin
+                      join tl in dsTheLoai on bv.IDTheLoai equals tl.IDTheLoai
+                      join qc in dsQuangCao on bv.IDQuangCao equals qc.IDQuangCao
+                      select new
+                      {
+                          IDBaiViet = bv.IDBaiViêt,
+                          TenBaiViet = bv.TenBaiViet,
+                          IdNhomTin = bv.IDNhomTin,
+                          TenNhomTin = nt.TenNhomTin,
+                          IdTheLoai = bv.IDTheLoai,
+                          TenTheLoai = tl.TenTheLoai,
+                          IdQuangCao = bv.IDQuangCao,
+                          QuangCao = qc.NoiDungQC,
+                          HinhAnhQC = qc.HinhAnh,
+                          NoiDungBaiViet = bv.NoiDungBaiViet,
+                          HinhAnh = bv.HinhAnh,
+                          SoSaoTB = bv.SoSaoTB,
+                          LuotXem = bv.LuotXem,
+                          NgaySua = bv.NgaySua,
+                          NguoiSua = bv.NguoiSua,
+                      });
+            try
+            {
+                var baiviet = ds.Where(nt => nt.IdTheLoai == int.Parse(idTheLoai)).ToList();
+                if (baiviet == null)
+                {
+                    return NotFound();
+                }
+                return Ok(baiviet);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("NewsByGenre")]
+        public IActionResult LayTheoNhomTin(string idNhomTin)
+        {
+            var dsBaiViet = _context.BaiVietDb.ToList();
+            var dsNhomTin = _context.NhomTinDb.ToList();
+            var dsTheLoai = _context.TheLoaiDb.ToList();
+            var dsQuangCao = _context.QuangCaoDb.ToList();
+
+            var ds = (from bv in dsBaiViet
+                      join nt in dsNhomTin on bv.IDNhomTin equals nt.IDNhomTin
+                      join tl in dsTheLoai on bv.IDTheLoai equals tl.IDTheLoai
+                      join qc in dsQuangCao on bv.IDQuangCao equals qc.IDQuangCao
+                      select new
+                      {
+                          IDBaiViet = bv.IDBaiViêt,
+                          TenBaiViet = bv.TenBaiViet,
+                          IdNhomTin = bv.IDNhomTin,
+                          TenNhomTin = nt.TenNhomTin,
+                          IdTheLoai = bv.IDTheLoai,
+                          TenTheLoai = tl.TenTheLoai,
+                          IdQuangCao = bv.IDQuangCao,
+                          QuangCao = qc.NoiDungQC,
+                          HinhAnhQC = qc.HinhAnh,
+                          NoiDungBaiViet = bv.NoiDungBaiViet,
+                          HinhAnh = bv.HinhAnh,
+                          SoSaoTB = bv.SoSaoTB,
+                          LuotXem = bv.LuotXem,
+                          NgaySua = bv.NgaySua,
+                          NguoiSua = bv.NguoiSua,
+                      });
+            try
+            {
+                var baiviet = ds.Where(nt => nt.IdNhomTin == int.Parse(idNhomTin)).ToList();
+                if (baiviet == null)
+                {
+                    return NotFound();
+                }
+                return Ok(baiviet);
             }
             catch
             {

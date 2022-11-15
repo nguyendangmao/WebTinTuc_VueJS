@@ -4358,7 +4358,8 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
+  color:black;
 }
 
 .nav-link:hover,
@@ -8194,7 +8195,9 @@ button.bg-dark:focus {
 .my-3 {
   margin-bottom: 1rem !important;
 }
-
+.p-4{
+  padding: 1em;
+}
 .ml-3,
 .mx-3 {
   margin-left: 1rem !important;
@@ -8344,9 +8347,7 @@ button.bg-dark:focus {
   padding-left: 1rem !important;
 }
 
-.p-4 {
-  padding: 1.5rem !important;
-}
+
 
 .pt-4,
 .py-4 {

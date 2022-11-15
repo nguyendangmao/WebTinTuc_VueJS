@@ -1,69 +1,29 @@
 <template>
-    <!-- <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8"   >         
-                    <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" :src="baiviets.hinhAnh" style="object-fit: cover;">
-                        <div class="bg-white border border-top-0 p-4">
-                            <div class="mb-3">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href=""></a>
-                                <a class="text-body" href="" ></a>
-                            </div>
-                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold" :noidung="baiviets.tenBaiViet">{{baiviets.tenBaiViet}}</h1>
-                            <p :noidung="baiviets.noiDungBaiViet">{{baiviets.noiDungBaiViet}}</p>                
-                        </div>
-                    </div>                     
-                </div>
+  <!-- News With Sidebar Start -->
+  <div class="container-fluid" autofocus>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- News Detail Start -->
+          <div class="position-relative mb-3">
+            <div class="bg-white border border-top-0 p-4">
+              <div class="mb-3"></div>
+              <div v-html="baiviet.noiDungBaiViet"></div>
             </div>
-        </div>
-    </div> -->
-    <!-- News With Sidebar Start -->
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- News Detail Start -->
-                    <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" :src="baiviets.hinhAnh" style="object-fit: cover;">
-                        <div class="bg-white border border-top-0 p-4">
-                            <div class="mb-3">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Business</a>
-                                <a class="text-body" href="">Jan 01, 2022</a>
-                            </div>
-                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold" :noidung="baiviets.tenBaiViet">{{baiviets.tenBaiViet}}</h1>
-                            <p :noidung="baiviets.noiDungBaiViet">{{baiviets.noiDungBaiViet}}</p>                
-                            <h3 class="text-uppercase font-weight-bold mb-3">Lorem ipsum dolor sit amet elit</h3>
-                            <img class="img-fluid w-50 float-left mr-4 mb-2" src="../assets/img/news-800x500-1.jpg">
-                            <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
-                                invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
-                                lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
-                                rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
-                                sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
-                                lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
-                                sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam
-                                dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna
-                                sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et
-                                duo tempor sea kasd clita ipsum et.</p>
-                            <h5 class="text-uppercase font-weight-bold mb-3">Lorem ipsum dolor sit amet elit</h5>                 
-                        </div>
-                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle mr-2" src="../assets/img/user.jpg" width="25" height="25" alt="">
-                                <span>John Doe</span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="ml-3"><i class="far fa-eye mr-2"></i>12345</span>
-                                <span class="ml-3"><i class="far fa-comment mr-2"></i>123</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- News Detail End -->
+            <div
+              class="
+                d-flex
+                justify-content-between
+                bg-white
+                border border-top-0
+                p-4
+              "
+            ></div>
+          </div>
+          <!-- News Detail End -->
 
-                    <!-- Comment List Start -->
-                    <div class="mb-3">
+          <!-- Comment List Start -->
+          <!-- <div class="mb-3">
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">3 Comments</h4>
                         </div>
@@ -98,189 +58,149 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Comment List End -->
+                    </div> -->
+          <!-- Comment List End -->
 
-                    <!-- Comment Form Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Leave a comment</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-4">
-                            <form>
-                                <div class="form-row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="name">Name *</label>
-                                            <input type="text" class="form-control" id="name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="email">Email *</label>
-                                            <input type="email" class="form-control" id="email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="website">Website</label>
-                                    <input type="url" class="form-control" id="website">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="message">Message *</label>
-                                    <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <input type="submit" value="Leave a comment"
-                                        class="btn btn-primary font-weight-semi-bold py-2 px-3">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Comment Form End -->
-                </div>
-                <div class="col-lg-4">
-                    <!-- Social Follow Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Theo dõi chúng tôi</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <a href="https://www.facebook.com/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
-                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Fans</span>
-                            </a>
-                            <a href="https://www.facebook.com/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
-                                <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Followers</span>
-                            </a>
-                            <a href="https://www.facebook.com/" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
-                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
-                                <span class="font-weight-medium">12,345 Connects</span>
-                            </a>    
-                        </div>
-                    </div>
-                    <!-- Social Follow End -->
-                    
-                    <!-- Ads Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Quảng Cáo</h4>
-                        </div>
-                        <div class="bg-white text-center border border-top-0 p-3">
-                            <a href=""><img class="img-fluid" src="../assets/img/news-800x500-2.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <!-- Ads End -->
-
-                    <!-- Popular News Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="../assets/img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="../assets/img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="../assets/img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                                    </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Popular News End -->
-
-                    <!-- Newsletter Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
-                        </div>
-                        <div class="bg-white text-center border border-top-0 p-3">
-                            <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
-                            <div class="input-group mb-2" style="width: 100%;">
-                                <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
-                                </div>
-                            </div>
-                            <small>Lorem ipsum dolor sit amet elit</small>
-                        </div>
-                    </div>
-                    <!-- Newsletter End -->
-
-                    <!-- Tags Start -->
-                    <div class="mb-3">
-                        <div class="section-title mb-0">
-                            <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
-                        </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex flex-wrap m-n1">
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Politics</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Corporate</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Health</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Education</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Science</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Business</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Foods</a>
-                                <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Tags End -->
-                </div>
+          <!-- Comment Form Start -->
+          <div class="mb-3">
+            <div class="section-title mb-0">
+              <h4 class="m-0 text-uppercase font-weight-bold">
+                Leave a comment
+              </h4>
             </div>
+            <div class="bg-white border border-top-0 p-4">
+              <form>
+                <div class="form-row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="name">Name *</label>
+                      <input type="text" class="form-control" id="name" />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="email">Email *</label>
+                      <input type="email" class="form-control" id="email" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="website">Website</label>
+                  <input type="url" class="form-control" id="website" />
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message *</label>
+                  <textarea
+                    id="message"
+                    cols="30"
+                    rows="5"
+                    class="form-control"
+                  ></textarea>
+                </div>
+                <div class="form-group mb-0">
+                  <input
+                    type="submit"
+                    value="Leave a comment"
+                    class="btn btn-primary font-weight-semi-bold py-2 px-3"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- Comment Form End -->
         </div>
+        <div class="col-lg-4">
+          <!-- Social Follow Start -->
+          <div class="mb-3">
+            <div class="section-title mb-0">
+              <h4 class="m-0 text-uppercase font-weight-bold">
+                Theo dõi chúng tôi
+              </h4>
+            </div>
+          </div>
+          <!-- Social Follow End -->
+
+          <!-- Ads Start -->
+          <div class="mb-3">
+            <div class="section-title mb-0">
+              <h4 class="m-0 text-uppercase font-weight-bold">Quảng Cáo</h4>
+            </div>
+            <!-- Ảnh quảng cáo của bài viết đó -->
+            <div class="bg-white text-center border border-top-0 p-3">
+              <img class="img-fluid" v-bind:src="baiviet.hinhAnhQC" alt="" />
+            </div>
+          </div>
+          <!-- Ads End -->
+          <!-- Tags Start -->
+          <div class="mb-3">
+            <div class="section-title mb-0">
+              <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+            </div>
+            <div class="bg-white border border-top-0 p-3">
+              <div class="d-flex flex-wrap m-n1">
+                <router-link
+                  :to="{
+                    name: 'NewsByGenre',
+                    params: { id: baiviet.idNhomTin },
+                  }"
+                  class="nav-item nav-link"
+                  >{{ baiviet.tenNhomTin }}</router-link
+                >
+                <router-link
+                  :to="{
+                    name: 'NewByCategory',
+                    params: { id: baiviet.idTheLoai },
+                  }"
+                  class="nav-item nav-link"
+                  >{{ baiviet.tenTheLoai }}</router-link
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Tags End -->
+        </div>
+      </div>
     </div>
-    <!-- News With Sidebar End -->
+  </div>
+  <!-- News With Sidebar End -->
 </template>
 <script>
 export default {
-    name: 'Home',
-    data(){
-        return {
-            baiviets:[]
-        }
+  name: "Detail",
+  data() {
+    return {
+      baiviet: {},
+    };
+  },
+  created() {
+    let id = this.$route.params.id;
+    this.getbaiviets(id);
+  },
+  updated() {
+    let id = this.$route.params.id;
+    this.getbaiviets(id);
+  },
+  methods: {
+    getbaiviets(id) {
+      this.$request
+        .get("https://localhost:44309/api/BaiViet/" + id)
+        .then((res) => {
+          this.baiviet = res.data;
+          this.baiviet.luotXem = this.baiviet.luotXem + 1;
+          this.Update(id);
+        });
     },
-    created(){
-        let id=this.$route.params.id
-        this.getbaiviets(id)
+    //Tính lượt xem
+    Update(id) {
+      this.$request
+        .put("https://localhost:44309/api/BaiViet/" + id,this.baiviet)
+        .then((res) => {
+            console.log("Thành công");
+        });
     },
-
-    methods: {
-        getbaiviets(id){
-        this.$request.get('https://localhost:44309/api/BaiViet/'+id).then(res => {
-            this.baiviets=res.data
-            console.log(res.data);
-        }) 
-    }
-    },
-}
+  },
+};
 </script>
 <style scoped>
 @import url(../../src/assets/css/style.css);

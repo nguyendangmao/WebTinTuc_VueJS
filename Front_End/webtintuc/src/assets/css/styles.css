@@ -1264,8 +1264,9 @@ a.label:focus {
 .breadcrumb {
   border-radius: 0;
   padding: 10px 15px 10px 15px;
-  background: #e9ecf2;
+  background-color: #fff;
   margin: 0;
+  border-left: 1px groove !important;
 }
 
 h1.page-header {
@@ -1529,9 +1530,6 @@ Date:10:53 Am 26/10/2022
   color: #FFF;
 }
 
-#sidebar-collapse {
-  background-color: bisque;
-}
 
 .button-6 {
   align-items: center;

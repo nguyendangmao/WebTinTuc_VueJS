@@ -77,11 +77,11 @@ export default {
             localStorage.setItem("user-info", JSON.stringify(response.data));
             this.$router.push({ path: "/tintuc" });
             // localStorage tồn tại trong 2 phút
-            setTimeout(() => {
-              localStorage.clear();
-              this.$router.push({ path: "/" });
-              alert("Đã kết thúc phiên bản, vui lòng đăng nhập lại");
-            }, 120000);
+            // setTimeout(() => {
+            //   localStorage.clear();
+            //   this.$router.push({ path: "/" });
+            //   alert("Đã kết thúc phiên bản, vui lòng đăng nhập lại");
+            // }, 120000);
           })
           .catch((e) =>{
             alert(e.response.data);

@@ -65,7 +65,7 @@
           <div class="mb-3">
             <div class="section-title mb-0">
               <h4 class="m-0 text-uppercase font-weight-bold">
-                Leave a comment
+              bình luận
               </h4>
             </div>
             <div class="bg-white border border-top-0 p-4">

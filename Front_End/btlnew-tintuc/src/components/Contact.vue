@@ -31,7 +31,8 @@
             <h6 class="text-uppercase font-weight-bold mb-3">Contact Us</h6>
             <form
               method="POST"
-              action="https://formspree.io/f/xdojyqdd"
+              action="https://formspree.io/f/xjvzleng"
+              
               @submit="Vaild"
             >
               <div class="form-row">

@@ -174,7 +174,7 @@
           <ckeditor :editor="editor" v-model="data.noiDungBaiViet"></ckeditor>
         </div>
         <div style="float: right">
-          <button @click="Confim(this.data_export.idBaiViet)" class="button-7">
+          <button @click="Confim(this.data.idBaiViet)" class="button-7">
             OK
           </button>
           <button @click="Begin()" class="button-8">Hủy</button>
@@ -439,6 +439,9 @@ export default {
       this.data_export.tenBaiViet = value.tenBaiViet;
       this.data_export.noiDungBaiViet = value.noiDungBaiViet;
       this.data_export.hinhAnh = value.hinhAnh;
+
+      this.data_export.soSaoTB = value.soSaoTB;
+      this.data_export.luotXem = value.luotXem;
     },
     /**
      * Khởi tạo lại trang thêm hoặc sửa

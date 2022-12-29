@@ -42,12 +42,13 @@
           </h5>
           <div
             class="m-n1"
-            v-for="nhomtin in theloais"
-            :key="nhomtin.idNhomTin"
+           
           >
             <router-link
               :to="{ name: 'NewsByGenre', params: { id: nhomtin.idNhomTin } }"
               class="btn btn-sm btn-secondary m-1"
+              v-for="nhomtin in theloais"
+            :key="nhomtin.idNhomTin"
               >{{ nhomtin.tenNhomTin }}</router-link
             >
           </div>
@@ -56,14 +57,15 @@
           <h5 class="mb-4 text-white text-uppercase font-weight-bold">
             Hình ảnh tin tức liên quan
           </h5>
-          <div class="row" v-for="baiviet in baiviets" :key="baiviet.idBaiViet">
-            <div class="col-4 mb-3">
-              <img
-                class="w-100"
-                v-bind:src="baiviet.hinhAnh"
-                v-bind:title="baiviet.tenBaiViet"
-              />
+          <div class="row"  >
+              <div class="col-4" v-for="baiviet in baiviets" :key="baiviet.idBaiViet"  style="display:block" > 
+                <img
+                  class="w-100"
+                  v-bind:src="baiviet.hinhAnh"
+                  v-bind:title="baiviet.tenBaiViet"
+                />                 
             </div>
+               
           </div>
         </div>
       </div>
